@@ -13,6 +13,6 @@ mongoose.connect(config.db, (err, res) =>{
 //probando git ignore
   //Hacer que la API corra en el puerto establecido
   app.listen(config.port, () => {
-    console.log(`API REST corriendo en htto://localhost::${config.port}`)
+    console.log(`API REST corriendo en http://localhost:${config.port}`)
   })
 })

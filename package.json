@@ -3,15 +3,17 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon -e js,hbs"
   },
   "keywords": [],
   "author": "Alexis Maita & Omar Montero",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
     "express": "^4.16.1",
     "express-handlebars": "^3.0.0",
+    "jquery": "^3.2.1",
     "jwt-simple": "^0.5.1",
     "moment": "^2.18.1",
     "mongoose": "^4.11.14"

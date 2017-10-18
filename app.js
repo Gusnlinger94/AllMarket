@@ -22,6 +22,9 @@ app.engine('.hbs', hbs({
 // res.render('contact', { title: 'Kontakt', scripts: scripts });
 
 app.use('/api',api)
+app.get('/', (req, res)=> {
+  res.send('<h1>Nada por aquí, nada por allá<h1/>')
+})
 app.get('/login', (req, res)=> {
   res.render('login', {title: 'login', scripts:scripts})
 })

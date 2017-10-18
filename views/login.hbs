@@ -1,26 +1,30 @@
 <form id="login" method="post">
-  <input type="email" id="correo" name="correo" value="" placeholder="Tu Email">
-  <br><br>
-  <input type="password" id="clave" name="clave" value="" placeholder="Tu contraseña">
-  <br><br>
-  <input type="submit" value="Login">
+	<input type="email" id="correo" name="correo" value="" placeholder="Tu Email">
+	<br><br>
+	<input type="password" id="clave" name="clave" value="" placeholder="Tu contraseña">
+	<br><br>
+	<input type="submit" value="Login">
 </form>
-
 <script type="text/javascript">
-document.addEventListener("DOMContentLoaded", (e) => {
-  document.querySelector("#login").addEventListener("submit", event =>{
-      event.preventDefault()
-      const formData = {
-        usuario: document.getElementById("correo").value,
-        clave: document.getElementById("clave").value
-      }
-      fetch('/api/signin', {
-        method: 'POST',
-        body: formData
-      })
-      .then(res => res.json())
-      .then(data => console.log(data));
-    });
-  });
+	/*$( document ).ready(function(e) {
+		console.log("jquery doc ready bby");
+	});*/
+	$(function() {
+		$('#login').on('submit', (e) => {
+			e.preventDefault();
+			const formData = {
+				correo: $("#correo").val(),
+				clave: $("#clave").val()
+			}
+			// console.log("Data form", formData);
+			fetch('http://localhost:4000/api/signin', {
+				method: 'POST',
+				body: JSON.stringify(formData),
+				headers: { 'Content-Type': 'application/json' }
+			})
+			.then(res => res.json())
+			.then(data => console.log("la data:", data));
+		})
+	});
 
 </script>
