@@ -29,18 +29,17 @@ function getCompra (req, res){ // BUSCA USUARIO POR ID
     })
       if(err) return res.status(500).send({message: `Error al realizar peticion: ${err}`});
       if(!compras) return res.status(404).send({message: 'La compra no existe'});
-      /*let final = []
-      compras.forEach((compra, index) => {
+      // let final = []
+      /*compras.forEach((compra, index) => {
         let productoId = compra.idProducto;
         Producto.findById(productoId, (err, producto) =>{
           console.log("entreee");
           // compra['producto'] = producto.nombre
-          final.push({
-            pago: compra.pago,
-            nombreProducto: producto.nombre
-          })
+          
         })
       });*/
+
+      console.log(compras);
 
       res.status(200).send(compras)
     })
