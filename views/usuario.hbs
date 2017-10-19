@@ -1,0 +1,23 @@
+
+<div>
+	<h1> Perfil del usuario </h1>
+	<div>
+		<strong>Nombre: </strong> <p id="nombre"></p> 
+		<strong>Correo: </strong> <p id="correo"></p>
+		<strong>telf: </strong> <p id="telf"></p>
+	<div/>
+</div>
+
+<script type="text/javascript">
+	//let usuario = document.createElement('ul')
+	let correo = localStorage.getItem("correo")
+	fetch(`http://localhost:4000/api/usuario/${correo}`)
+		.then(res => res.json())
+		.then(user => {
+			$('#nombre').html(user.nombre);
+			$('#correo').html(user.correo);
+			$('#telf').html(user.telf);
+			console.log("---------", user);
+		});
+	
+</script>

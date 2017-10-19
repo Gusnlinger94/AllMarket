@@ -5,11 +5,12 @@ const bodyParser = require('body-parser')
 const hbs = require('express-handlebars')
 const app = express();
 const api = require('./routes')
+const cors = require('cors');
 
 //Inicializa el bodyParser
 app.use(bodyParser.urlencoded({ extended: false}))
 app.use(bodyParser.json());
-
+app.use(cors());
 app.engine('.hbs', hbs({
   defaultLayout : 'default',
   extname : '.hbs'
@@ -22,12 +23,18 @@ app.engine('.hbs', hbs({
 // res.render('contact', { title: 'Kontakt', scripts: scripts });
 
 app.use('/api',api)
-app.get('/', (req, res)=> {
+/*app.get('/', (req, res)=> {
   res.send('<h1>Nada por aquí, nada por allá<h1/>')
 })
 app.get('/login', (req, res)=> {
   res.render('login', {title: 'login', scripts:scripts})
 })
+app.get('/user', (req, res)=> {//RENDERIZA EL USUARIO
+  res.render('usuario', {title: 'usuario', scripts:scripts})
+})
+app.get('/signup', (req, res)=> {//RENDERIZA EL REGISTRARSE
+  res.render('registrarse', {title: 'registrarse', scripts:scripts})
+})*/
 /*app.get('/hola/:name', (req, res) => {
   res.send({message: `hola ${req.params.name}!`})
 }) por si lo necesito*/

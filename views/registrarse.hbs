@@ -1,0 +1,84 @@
+<body>
+	<div id="registrar">
+          	<a href="/login"</a>Regresar</a>
+    </div>
+	<div id="envoltura">
+		<div id="contenedor">
+
+			<div id="cabecera">
+				<img src="./../css/images/logo.gif" >
+			</div>
+
+			<div id="cuerpo">
+
+				<form id="form-login" action="#" method="post" >
+					<p><label for="nombre">Nombre:</label></p>
+						<input name="nombre" type="text" id="nombre" class="nombre" placeholder="Pon tu nombre" autofocus=""/ ></p>
+
+					<p><label for="telefono">Telefono:</label></p>
+						<input name="telefono" type="text" id="telefono" class="telefono" placeholder="Pon tu telefono" /></p>
+
+					<p><label for="correo">Correo:</label></p>
+						<input name="correo" type="email" id="correo" class="correo" placeholder="Pon tu Email" /></p>
+
+					<p><label for="clave">Clave:</label></p>
+						<input name="clave" type="password" id="clave" class="clave" placeholder="Pon tu contraseña"/ ></p>
+
+					<p><label for="tipo">Tipo:</label></p>
+						<input name="tipo" type="text" id="tipo" class="tipo" placeholder="Tipo [admin o user]" /></p>
+
+					<p id="bot"><input name="submit" type="submit" id="boton" value="Registrar" class="boton"/></p>
+				</form>
+			</div>
+
+			<script type="text/javascript">
+				//var pagina = '/api/usuario';
+				//var segundos = 1;
+				//function redireccion() {
+					//document.location.href = pagina;
+				//}
+				$(function() {
+					$('#form-login').on('submit', (e) => {
+						e.preventDefault();
+						const formData = {
+							nombre: $("#nombre").val(),
+							telefono: $("#telefono").val(),
+							correo: $("#correo").val(),
+							clave: $("#clave").val(),
+							tipo: $("#tipo").val(),
+						}
+						console.log("Data form", formData);
+						fetch('http://localhost:4000/api/signup', {
+							method: 'POST',
+							body: JSON.stringify(formData),
+							headers: { 'Content-Type': 'application/json' }
+						})
+						.then(res => res.json())
+						.then(data => {
+						if (data.token){
+
+							console.log("el token:", data.token);
+							//console.log("el usuario:", data.user);
+							//localStorage.setItem('token',data.token);
+							//console.log("Token del localStorage:", localStorage.getItem("token"));//NO SE
+							//setTimeout("redireccion()",segundos);
+							//aqui debe rediracionar a la ventana usuario
+						}
+						console.log("la data:", data);
+						});
+						//.then(data => console.log("la data:", data));
+
+
+					})
+				});
+
+			</script>
+
+			<div id="pie">Sistema de Login Y Registro</div>
+		</div><!-- fin contenedor -->
+
+	</div>
+
+</body>
+
+</html>

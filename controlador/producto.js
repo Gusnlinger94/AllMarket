@@ -26,16 +26,16 @@ function getProducto (req, res){
     if(err) return res.status(500).send({message: `Error al realizar peticion: ${err}`})
     if(!producto) return res.status(404).send({message: 'El producto no existe'})
 
-    res.status(200).send({ producto: producto })
+    res.status(200).send(producto)
   })
 }
 
-function getProducto (req, res){
+function getProductos (req, res){
   Producto.find({}, (err, producto) =>{
     if(err) return res.status(500).send({message: `Error al realizar peticion: ${err}`})
     if(!producto) return res.status(404).send({message: 'No existen productos'})
 
-    res.status(200).send({ producto: producto })
+    res.status(200).send(producto)
   })
 }
 
@@ -76,7 +76,7 @@ function getID (req, res){
 
 module.exports = {
   saveProducto,
-  getProducto,
+  getProductos,
   getProducto,
   updateProducto,
   getID,
